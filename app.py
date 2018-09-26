@@ -17,6 +17,7 @@ def home():
     # return f'Hello World! <a href="{link}">people</a>'
     return render_template("home.html", link=link)
 
+
 @app.route('/people', methods=['GET', 'POST'])
 def people():
     if request.method == 'POST':
