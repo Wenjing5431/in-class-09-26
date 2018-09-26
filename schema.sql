@@ -1,5 +1,5 @@
-drop table person;
 drop table skill;
+drop table person;
 
 create table person(
   person_id SERIAL PRIMARY KEY,

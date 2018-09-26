@@ -7,24 +7,22 @@ import db
 
 app = Flask(__name__)
 
+
 @app.before_first_request
 def initialize():
     db.setup()
 
+
 @app.route('/')
 def home():
-    link = url_for("people")
-    # return f'Hello World! <a href="{link}">people</a>'
-    return render_template("home.html", link=link)
+    return render_template("home.html")
 
 
 @app.route('/people', methods=['GET', 'POST'])
 def people():
     if request.method == 'POST':
-        name = request.form['name']
-        app.logger.info(f"got a name: {name}")
-        with db.get_db_cursor(commit=True) as cur:
-            cur.execute("insert into person (name) values (%s)", (name,))
+        # TODO insert the new person into the db
+        # request.form['xxxx']
         return redirect(url_for("people"))
     else:
         with db.get_db_cursor() as cur:
@@ -44,7 +42,8 @@ def api_foo():
             "key": "value"
         }
     }
-    return jsonify(data)
+    # FIXME
+    return data
 
 
 if __name__ == '__main__':
