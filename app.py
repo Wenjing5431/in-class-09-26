@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 import psycopg2
 
 import db
@@ -31,6 +31,20 @@ def people():
             names = [record["name"] for record in cur]
 
         return render_template("people.html", names=names)
+
+
+@app.route('/api/foo')
+def api_foo():
+    data = {
+        "message": "hello, world",
+        "isAGoodExample": False,
+        "aList": [1, 2, 3],
+        "nested": {
+            "key": "value"
+        }
+    }
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     pass
