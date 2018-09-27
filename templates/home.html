@@ -1,18 +1,22 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block title %}home{% endblock %}
+{% block header %}
+  <h1>Home Page</h1>
+{% endblock %}
 
 {% block content %}
 
-<form class="pure-form pure-form-stacked" method="post" action="/people">
+<!-- <form class="pure-form pure-form-stacked"> -->
+<form method="post" action="/people">
     <fieldset>
         <legend>A form to add a person to the database.</legend>
 
-        <label for="person">New Person's Name</label>
-        <input id="name-input" name="name" type="text" placeholder="New Name" required minlength="3">
+        <label for="TODO">New Person's Name</label>
+        <input id="name-input" name="name" type="text" placeholder="New Name">
 
-        <button type="submit" class="pure-button pure-button-primary">Add</button>
+        <button type="submit">Add</button>
+        <!-- <button type="submit" class="pure-button pure-button-primary">Add</button> -->
     </fieldset>
 </form>
-
-
 {% endblock %}

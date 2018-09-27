@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}profile{% endblock %}
+
+{% block content %}
+<h1>Profile:</h1>
+<h4>User ID: {{user[0]}}</h4>
+<h4>Name: {{user[1]}}</h4>
+
+<form method="post" action="/editprofile">
+  <!-- <legend>Update name</legend> -->
+
+  <label>Update name</label>
+  <input id="id-input" name="userid" type="hidden" value="{{user[0]}}">
+  <input id="name-input" name="name" type="text" placeholder="{{user[1]}}">
+
+  <button type="submit">Edit</button>
+</form>
+
+{% endblock %}
